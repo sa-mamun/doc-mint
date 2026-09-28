@@ -1,25 +1,60 @@
 {
   "expo": {
-    "name": "doc-mint",
+    "name": "DocMint: PDF Scanner",
+    "scheme": "docmint",
     "slug": "doc-mint",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.samamaun.docmint"
     },
     "android": {
+      "package": "com.samamaun.docmint",
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#335CDE",
         "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-sharing",
+      "expo-font",
+      "expo-router",
+      "./plugins/with-gradle-jdk17",
+      "./plugins/with-smoother-document-scanner",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "ডকুমেন্ট স্ক্যান করতে DocMint-কে ক্যামেরা ব্যবহারের অনুমতি দিন।",
+          "photosPermission": "ছবি থেকে PDF বানাতে DocMint-কে ছবি বেছে নেওয়ার অনুমতি দিন।",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "cmakeVersion": "3.31.1"
+          }
+        }
+      ],
+      [
+        "react-native-document-scanner-plugin",
+        {
+          "cameraPermission": "ডকুমেন্ট স্ক্যান করতে DocMint-কে ক্যামেরা ব্যবহারের অনুমতি দিন।"
+        }
+      ]
+    ]
   }
 }
